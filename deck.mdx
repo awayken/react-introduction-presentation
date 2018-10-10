@@ -1,23 +1,108 @@
-import { Head } from 'mdx-deck'
+import { Appear, Head, Image } from 'mdx-deck'
+import { Split } from 'mdx-deck/layouts'
 
 export { default as theme } from './theme'
 
 <Head>
-  <title>Presentation Title</title>
+  <title>Introduction to React</title>
 </Head>
 
-# Hello
+# Introduction to React
+
+by Miles Rausch
+
+[http://milesrausch.com](http://milesrausch.com)
 
 ---
 
-## Edit this file
+## Hyperlinks
 
-To create your presentation
+Slides & Demo:
+
+[github.com/awayken/react-introduction-presentation](https://github.com/awayken/react-introduction-presentation)
+
+---
+
+export default Split
+
+![My headshot](./images/me.jpg)
+
+Who Am I?
 
 ```notes
-- Create speaker notes in fenced code blocks
+Miles Rausch, a Source Code Alchemist in Sioux Falls, SD.
+
+Blogs at http://milesrausch.com and writes at https://miles.ink.
+
+Developer for https://carsforsale.com.
 ```
 
 ---
 
-<https://github.com/jxnblk/mdx-deck>
+User interfaces are hard.
+
+---
+
+<Image src="./images/check-engine-light.jpg" />
+
+```notes
+Worst interface ever. It's a big error message with zero context, and it's often a false alarm.
+
+"Car Photos" by Jim Larrison on Flickr
+
+https://flic.kr/p/cXMK9o
+```
+
+---
+
+<Image src="./images/facebook-notification.png" size="contain" />
+
+```notes
+Perhaps apocryphal, but the source of frustration that became React.
+
+User Interface Templates by Facebook
+
+https://en.facebookbrand.com/assets/newsfeed
+```
+
+---
+
+## What is React?
+
+<ul>
+  <Appear>
+    <li>"A JavaScript library for building user interfaces"</li>
+    <li>Created and open sourced by Facebook in 2013</li>
+    <li>112k+ Stars, 1.2k+ Contributors on <a href="https://github.com/facebook/react/">facebook/react</a></li>
+  </Appear>
+</ul>
+
+---
+
+## Why use React?
+
+<ul>
+  <Appear>
+    <li>Declarative - simple views that react to changes in state</li>
+    <li>Component-based - encapsulate your UI in tight, composable chunks</li>
+    <li>Multiple render targets - render for browser, mobile native or VR</li>
+  </Appear>
+</ul>
+
+---
+
+## What does React code look like?
+
+```js
+class HelloMessage extends React.Component {
+  render() {
+    return (
+      <div>Hello, {this.props.name}</div>
+    );
+  }
+}
+ReactDOM.render(
+  <HelloMessage name="Miles" />,
+  rootEl
+);
+```

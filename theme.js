@@ -1,12 +1,17 @@
-import theme from 'mdx-deck/themes'
+import { hack as theme } from 'mdx-deck/themes'
 
-export default {
-  ...theme,
+const reactTheme = {...theme}
 
-  // Customize your presentation theme here.
-  //
-  // Read the docs for more info:
-  // https://github.com/jxnblk/mdx-deck/blob/master/docs/theming.md
-  // https://github.com/jxnblk/mdx-deck/blob/master/docs/themes.md
+reactTheme.colors.background = "#20232a"
+reactTheme.colors.codeBackground = "rgb(40, 44, 52)"
+reactTheme.colors.heading = "rgb(97, 218, 251)"
+reactTheme.colors.link = "rgb(97, 218, 251)"
+reactTheme.colors.pre = "rgb(136, 198, 190)"
+reactTheme.colors.preBackground = "rgb(40, 44, 52)"
+reactTheme.colors.text = "#ffff"
 
-}
+reactTheme.css.fontWeight = 200
+
+reactTheme.font = "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif"
+
+export default reactTheme
