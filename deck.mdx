@@ -1,5 +1,6 @@
 import { Appear, Head, Image } from 'mdx-deck'
-import { Split } from 'mdx-deck/layouts'
+import { FullScreenCode, Split } from 'mdx-deck/layouts'
+import Button from './components/Button'
 
 export { default as theme } from './theme'
 
@@ -36,6 +37,9 @@ Blogs at http://milesrausch.com and writes at https://miles.ink.
 
 Developer for https://carsforsale.com.
 ```
+---
+
+Let's talk about user interfaces.
 
 ---
 
@@ -46,25 +50,34 @@ User interfaces are hard.
 <Image src="./images/check-engine-light.jpg" />
 
 ```notes
-Worst interface ever. It's a big error message with zero context, and it's often a false alarm.
+I don't know about you, but I have never seen a "Check Engine" light
+and known unequivicablly what the issue was and whether it was serious.
+This interface is horrible: ambiguous and vague.
 
-"Car Photos" by Jim Larrison on Flickr
+Bad interfaces are everywhere. They exist in our physical devices and our
+software, especially websites.
 
-https://flic.kr/p/cXMK9o
+Photo by Jim Larrison: https://flic.kr/p/cXMK9o
 ```
+---
 
+<Image src="./images/rawpixel-750931-unsplash.jpg" />
+
+```notes
+Then this happened. These interface problems only got worse with phones.
+Our problem wasn't just clarity or precision, it was now also adaptability
+and responsiveness. We had to account for screen size, network conditions,
+device capability and more.
+
+Photo by rawpixel: https://unsplash.com/photos/rENRXgLsDEQ
+```
 ---
 
 <Image src="./images/facebook-notification.png" size="contain" />
 
 ```notes
 Perhaps apocryphal, but the source of frustration that became React.
-
-User Interface Templates by Facebook
-
-https://en.facebookbrand.com/assets/newsfeed
 ```
-
 ---
 
 ## What is React?
@@ -91,18 +104,112 @@ https://en.facebookbrand.com/assets/newsfeed
 
 ---
 
-## What does React code look like?
+## How do we do this?
 
-```js
-class HelloMessage extends React.Component {
+<ul>
+  <Appear>
+    <li>Virtual DOM</li>
+    <li>JSX</li>
+    <li>Props reflect configuration</li>
+    <li>State reflects changing data</li>
+  </Appear>
+</ul>
+
+---
+export default FullScreenCode
+
+```jsx
+// JSX
+<Button text="Hello, World!">
+  <p>How are you?</p>
+</Button>
+
+// JavaScript
+React.createElement(
+  Button,
+  { text: 'Hello, World!' },
+  React.createElement(
+    'p',
+    null,
+    'How are you?'
+  )
+)
+```
+
+```notes
+JSX example
+```
+---
+export default FullScreenCode
+
+```jsx
+// Button.jsx
+const Button = (props) => (
+  <button className="magicbutton" onClick={props.onClick}>
+    <h1>{props.text}<h1>
+    {props.children}
+  </button>
+)
+
+// App.jsx
+<Button heading="Hello, World!" onClick={startMagic}>
+  <p>Start Magic!</p>
+</Button>
+```
+
+```notes
+Props example
+```
+---
+export default FullScreenCode
+
+```jsx
+// Button.jsx
+class Button extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { count: 0 }
+  }
+  addCount = () => {
+    const count = this.state.count;
+    this.setState({ count: count + 1 })
+  }
   render() {
-    return (
-      <div>Hello, {this.props.name}</div>
-    );
+    return (<button onClick={this.addCount}>
+      {this.props.label}: {this.state.count}
+    </button>)
   }
 }
-ReactDOM.render(
-  <HelloMessage name="Miles" />,
-  rootEl
-);
+```
+
+```notes
+State example
+```
+---
+export default Split
+
+```jsx
+// App.jsx
+<Button label="Clicks" />
+
+<Button label="Clacks" />
+```
+
+<Button label="Clicks" />
+
+<Button label="Clacks" />
+
+```notes
+Live demo
+```
+---
+
+This very presentation is powered by React.
+
+---
+
+<Image src="./images/ben-white-197668-unsplash.jpg" />
+
+```notes
+Photo by Ben White: https://unsplash.com/photos/qDY9ahp0Mto
 ```
