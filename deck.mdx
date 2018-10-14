@@ -41,10 +41,9 @@ Developer for https://carsforsale.com.
 
 Let's talk about user interfaces.
 
----
-
+```notes
 User interfaces are hard.
-
+```
 ---
 
 <Image src="./images/check-engine-light.jpg" />
@@ -90,6 +89,11 @@ Perhaps apocryphal, but the source of frustration that became React.
   </Appear>
 </ul>
 
+```notes
+"A JavaScript library for building user interfaces"
+Created and open sourced by Facebook in 2013
+112k+ Stars, 1.2k+ Contributors
+```
 ---
 
 ## Why use React?
@@ -102,6 +106,11 @@ Perhaps apocryphal, but the source of frustration that became React.
   </Appear>
 </ul>
 
+```notes
+Declarative
+Component-based
+Multiple render targets
+```
 ---
 
 ## How do we do this?
@@ -115,6 +124,19 @@ Perhaps apocryphal, but the source of frustration that became React.
   </Appear>
 </ul>
 
+```notes
+Virtual DOM
+JSX
+Props reflect configuration
+State reflects changing data
+```
+---
+
+Let's explore these a little more.
+
+```notes
+It's a lot to take in.
+```
 ---
 export default FullScreenCode
 
@@ -204,6 +226,8 @@ Live demo
 ```
 ---
 
+Want another example?
+
 This very presentation is powered by React.
 
 ---
@@ -213,3 +237,161 @@ This very presentation is powered by React.
 ```notes
 Photo by Ben White: https://unsplash.com/photos/qDY9ahp0Mto
 ```
+---
+
+How do we get started?
+
+https://reactjs.org/docs/add-react-to-a-website.html
+
+---
+
+## Step 1: Add a container to HTML
+
+```html
+<body>
+  <!-- snip -->
+  <div id="like_button"></div>
+  <!-- snip -->
+</body>
+```
+
+```notes
+Every component needs a container to mount to.
+
+React can be added incrementally. You don't need a whole site written in it.
+
+You can use a very small component to start and then branch out from there.
+```
+---
+
+## Step 2: Add the Script Tags
+
+```html
+<head>
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+</head>
+<body>
+  <!-- snip -->
+  <script src="like_button.js"></script>
+</body>
+```
+
+```notes
+Include React library.
+
+Include ReactDOM script, because we are rendering to DOM.
+
+Finally, include our component script.
+```
+---
+export default FullScreenCode
+
+```js
+const e = React.createElement;
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+  render() {
+    if (this.state.liked) { return 'You liked this.'; }
+    return e('button',
+      { onClick: () => this.setState({ liked: true }) },
+      'Like');
+  }
+}
+ReactDOM.render(e(LikeButton), document.querySelector('#like_button'));
+```
+
+```notes
+Step 3: Create a React Component
+```
+---
+
+Let's see it in action:
+
+https://codepen.io/awayken/pen/gBGLzY
+
+---
+
+What if I want a React-powered website?
+
+---
+
+## Create React App
+
+```sh
+npx create-react-app my-app
+cd my-app
+
+# To work on your site and run it
+npm start
+
+# To create an optimized build
+npm run build
+```
+
+```notes
+It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production.
+```
+
+---
+
+## Resources
+
+<ul>
+  <Appear>
+    <li><a href="https://reactjs.org/">https://reactjs.org/</a></li>
+    <li><a href="https://reactjs.org/tutorial/tutorial.html">https://reactjs.org/tutorial/tutorial.html</a></li>
+    <li>Play around on <a href="https://reactjs.org/redirect-to-codepen/hello-world">CodePen</a> or <a href="https://codesandbox.io/s/new">CodeSandbox</a></li>
+    <li><a href="https://reactjs.org/docs/thinking-in-react.html">https://reactjs.org/docs/thinking-in-react.html</a></li>
+    <li><a href="https://reactjs.org/community/courses.html">https://reactjs.org/community/courses.html</a></li>
+    <li><a href="https://github.com/enaqx/awesome-react">https://github.com/enaqx/awesome-react</a></li>
+  </Appear>
+</ul>
+
+```notes
+https://reactjs.org/
+https://reactjs.org/tutorial/tutorial.html
+Play around on CodePen or CodeSandbox
+https://reactjs.org/docs/thinking-in-react.html
+https://reactjs.org/community/courses.html
+https://github.com/enaqx/awesome-react
+```
+---
+
+## Who uses React?
+
+<ul>
+  <Appear>
+    <li>Airbnb</li>
+    <li>Facebook</li>
+    <li>Instagram</li>
+    <li>Lyft</li>
+    <li>Netflix</li>
+    <li>New York Times</li>
+    <li>Spotify</li>
+    <li>Twitter</li>
+    <li>Walmart</li>
+  </Appear>
+</ul>
+
+```notes
+Airbnb
+Facebook
+Instagram
+Lyft
+Netflix
+New York Times
+Spotify
+Twitter
+Walmart
+```
+---
+
+Questions?
+
+---
+
+Thanks!
