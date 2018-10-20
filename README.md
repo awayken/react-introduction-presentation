@@ -1,10 +1,8 @@
-# react-introduction-presentation
+# Introduction to React
 
-Introduction to React.js
+by Miles Rausch
 
-# mdx-deck basic template
-
-This was generated with [mdx-deck][]'s `npm init deck` command.
+[http://milesrausch.com](http://milesrausch.com)
 
 ## Development
 
@@ -13,8 +11,6 @@ To run the presentation deck in development mode:
 ```sh
 npm start
 ```
-
-Edit the [`deck.mdx`](deck.mdx) file to get started.
 
 ## Exporting
 
@@ -35,8 +31,3 @@ To export an image of the title slide:
 ```sh
 npm run image
 ```
-
-For more documentation see the [mdx-deck][] repo.
-
-[mdx-deck]: https://github.com/jxnblk/mdx-deck
-
