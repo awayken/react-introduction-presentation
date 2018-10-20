@@ -1,6 +1,7 @@
 import { Appear, Head, Image } from 'mdx-deck'
 import { FullScreenCode, Split } from 'mdx-deck/layouts'
 import Button from './components/Button'
+import Link from './components/Link'
 
 export { default as theme } from './theme'
 
@@ -16,6 +17,13 @@ by Miles Rausch
 
 ---
 
+<Image src="./images/sponsors.png" />
+
+```notes
+Thank you to our sponsors.
+```
+---
+
 ## Hyperlinks
 
 Slides & Demo:
@@ -24,11 +32,7 @@ Slides & Demo:
 
 ---
 
-export default Split
-
-![My headshot](./images/me.jpg)
-
-Who Am I?
+<Image src="./images/me.jpg" size="contain" />
 
 ```notes
 Miles Rausch, a Source Code Alchemist in Sioux Falls, SD.
@@ -103,6 +107,7 @@ Created and open sourced by Facebook in 2013
     <li>Declarative - simple views that react to changes in state</li>
     <li>Component-based - encapsulate your UI in tight, composable chunks</li>
     <li>Multiple render targets - render for browser, mobile native or VR</li>
+    <li>Used by many companies, like: Facebook, Instagram, Twitter, Walmart and more</li>
   </Appear>
 </ul>
 
@@ -113,7 +118,7 @@ Multiple render targets
 ```
 ---
 
-## How do we do this?
+## How does it work?
 
 <ul>
   <Appear>
@@ -168,7 +173,7 @@ export default FullScreenCode
 // Button.jsx
 const Button = (props) => (
   <button className="magicbutton" onClick={props.onClick}>
-    <h1>{props.text}<h1>
+    <h1>{props.heading}<h1>
     {props.children}
   </button>
 )
@@ -228,7 +233,9 @@ Live demo
 
 Want another example?
 
-This very presentation is powered by React.
+<Appear>
+  This very presentation is powered by React.
+</Appear>
 
 ---
 
@@ -361,32 +368,14 @@ https://github.com/enaqx/awesome-react
 ```
 ---
 
-## Who uses React?
+## Carsforsale.com Is Hiring
 
-<ul>
-  <Appear>
-    <li>Airbnb</li>
-    <li>Facebook</li>
-    <li>Instagram</li>
-    <li>Lyft</li>
-    <li>Netflix</li>
-    <li>New York Times</li>
-    <li>Spotify</li>
-    <li>Twitter</li>
-    <li>Walmart</li>
-  </Appear>
-</ul>
+Email <Link email="erin.mcmanus@carsforsale.com">Erin McManus</Link>
 
 ```notes
-Airbnb
-Facebook
-Instagram
-Lyft
-Netflix
-New York Times
-Spotify
-Twitter
-Walmart
+I use React and C# every day. Actually, we use React.net which allows us
+to server render our React and pass C# classes and data right into our
+components.
 ```
 ---
 
