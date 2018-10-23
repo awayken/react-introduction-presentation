@@ -1,0 +1,348 @@
+import { Appear, Head, Image } from 'mdx-deck'
+import { FullScreenCode, Split } from 'mdx-deck/layouts'
+import Button from './components/Button'
+import Link from './components/Link'
+
+export { default as theme } from './theme'
+
+<Head>
+  <title>Introduction to React</title>
+</Head>
+
+# Introduction to React
+
+by Miles Rausch
+
+[http://milesrausch.com](http://milesrausch.com)
+
+---
+
+<Image src="./images/sponsors.png" />
+
+```notes
+Thank you to our sponsors.
+```
+---
+
+## Hyperlinks
+
+Slides & Demo:
+
+[github.com/awayken/react-introduction-presentation](https://github.com/awayken/react-introduction-presentation)
+
+---
+
+<Image src="./images/me.jpg" size="contain" />
+
+```notes
+Miles Rausch, a Source Code Alchemist in Sioux Falls, SD.
+
+Blogs at http://milesrausch.com and writes at https://miles.ink.
+
+Developer for https://carsforsale.com.
+```
+---
+
+Let's talk about user interfaces.
+
+```notes
+User interfaces are hard.
+```
+---
+
+<Image src="./images/facebook-notification.png" size="contain" />
+
+```notes
+Perhaps apocryphal, but the source of frustration that became React.
+```
+---
+
+## What is React?
+
+<ul>
+  <Appear>
+    <li>"A JavaScript library for building user interfaces"</li>
+    <li>Declarative - simple views that react to changes in state</li>
+    <li>Component-based - encapsulate your UI in tight, composable chunks</li>
+    <li>Multiple render targets - render for browser, mobile native or VR</li>
+    <li>Popular - Facebook, Instagram, Twitter, Walmart and more</li>
+    <li>Huge ecosystem - easy to publish components to <kbd>npm</kbd></li>
+  </Appear>
+</ul>
+
+```notes
+"A JavaScript library for building user interfaces"
+Declarative
+Component-based
+Multiple render targets
+Popular
+Huge ecosystem
+```
+---
+
+## How does it work?
+
+<ul>
+  <Appear>
+    <li>Virtual DOM</li>
+    <li>JSX</li>
+    <li>Props reflect configuration</li>
+    <li>State reflects changing data</li>
+  </Appear>
+</ul>
+
+```notes
+Virtual DOM
+JSX
+Props reflect configuration
+State reflects changing data
+```
+---
+
+Let's explore these a little more.
+
+```notes
+It's a lot to take in.
+```
+---
+export default FullScreenCode
+
+```jsx
+// JSX
+<Button text="Hello, World!" size={10 + 5} disabled>
+  <p>How are you?</p>
+</Button>
+
+// JavaScript
+React.createElement(
+  Button,
+  { text: 'Hello, World!', size: 10 + 5, disabled: true },
+  React.createElement(
+    'p',
+    null,
+    'How are you?'
+  )
+)
+```
+
+```notes
+JSX example
+```
+---
+export default FullScreenCode
+
+```jsx
+// Button.jsx
+const Button = (props) => (
+  <button className="magicbutton" onClick={props.onClick}>
+    <h1>{props.heading}<h1>
+    {props.children}
+  </button>
+)
+
+// App.jsx
+<Button heading="Hello, World!" onClick={startMagic}>
+  <p>Start Magic!</p>
+</Button>
+```
+
+```notes
+Props example
+```
+---
+export default FullScreenCode
+
+```jsx
+// Button.jsx
+class Button extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { count: 0 }
+  }
+  addCount = () => {
+    const count = this.state.count;
+    this.setState({ count: count + 1 })
+  }
+  render() {
+    return (<button onClick={this.addCount}>
+      {this.props.label}: {this.state.count}
+    </button>)
+  }
+}
+```
+
+```notes
+State example
+```
+---
+export default Split
+
+```jsx
+// App.jsx
+<Button label="Clicks" />
+
+<Button label="Clacks" />
+```
+
+<Button label="Clicks" />
+
+<Button label="Clacks" />
+
+```notes
+Live demo
+```
+---
+
+Want another example?
+
+<Appear>
+  This very presentation is powered by React.
+</Appear>
+
+---
+
+<Image src="./images/ben-white-197668-unsplash.jpg" />
+
+```notes
+Photo by Ben White: https://unsplash.com/photos/qDY9ahp0Mto
+```
+---
+
+How do we get started?
+
+https://reactjs.org/docs/add-react-to-a-website.html
+
+---
+
+## Step 1: Add a container to HTML
+
+```html
+<body>
+  <!-- snip -->
+  <div id="like_button"></div>
+  <!-- snip -->
+</body>
+```
+
+```notes
+Every component needs a container to mount to.
+
+React can be added incrementally. You don't need a whole site written in it.
+
+You can use a very small component to start and then branch out from there.
+```
+---
+
+## Step 2: Add the Script Tags
+
+```html
+<head>
+  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+</head>
+<body>
+  <!-- snip -->
+  <script src="like_button.js"></script>
+</body>
+```
+
+```notes
+Include React library.
+
+Include ReactDOM script, because we are rendering to DOM.
+
+Finally, include our component script.
+```
+---
+export default FullScreenCode
+
+```js
+const e = React.createElement;
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+  render() {
+    if (this.state.liked) { return 'You liked this.'; }
+    return e('button',
+      { onClick: () => this.setState({ liked: true }) },
+      'Like');
+  }
+}
+ReactDOM.render(e(LikeButton), document.querySelector('#like_button'));
+```
+
+```notes
+Step 3: Create a React Component
+```
+---
+
+Let's see it in action:
+
+https://codepen.io/awayken/pen/gBGLzY
+
+---
+
+What if I want a React-powered website?
+
+---
+
+## Create React App
+
+```sh
+npx create-react-app my-app
+cd my-app
+
+# To work on your site and run it
+npm start
+
+# To create an optimized build
+npm run build
+```
+
+```notes
+It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production.
+```
+
+---
+
+## Resources
+
+<ul>
+  <Appear>
+    <li><a href="https://reactjs.org/">https://reactjs.org/</a></li>
+    <li><a href="https://reactjs.org/tutorial/tutorial.html">https://reactjs.org/tutorial/tutorial.html</a></li>
+    <li>Play around on <a href="https://reactjs.org/redirect-to-codepen/hello-world">CodePen</a> or <a href="https://codesandbox.io/s/new">CodeSandbox</a></li>
+    <li><a href="https://reactjs.org/docs/thinking-in-react.html">https://reactjs.org/docs/thinking-in-react.html</a></li>
+    <li><a href="https://reactjs.org/community/courses.html">https://reactjs.org/community/courses.html</a></li>
+    <li><a href="https://github.com/enaqx/awesome-react">https://github.com/enaqx/awesome-react</a></li>
+  </Appear>
+</ul>
+
+```notes
+https://reactjs.org/
+https://reactjs.org/tutorial/tutorial.html
+Play around on CodePen or CodeSandbox
+https://reactjs.org/docs/thinking-in-react.html
+https://reactjs.org/community/courses.html
+https://github.com/enaqx/awesome-react
+```
+---
+
+## Carsforsale.com Is Hiring
+
+Email <Link email="erin.mcmanus@carsforsale.com">Erin McManus</Link>
+
+```notes
+I use React and C# every day. Actually, we use React.net which allows us
+to server render our React and pass C# classes and data right into our
+components.
+```
+---
+
+Questions?
+
+---
+
+Thanks!
