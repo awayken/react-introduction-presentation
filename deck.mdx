@@ -50,32 +50,6 @@ User interfaces are hard.
 ```
 ---
 
-<Image src="./images/check-engine-light.jpg" />
-
-```notes
-I don't know about you, but I have never seen a "Check Engine" light
-and known unequivicablly what the issue was and whether it was serious.
-This interface is horrible: ambiguous and vague.
-
-Bad interfaces are everywhere. They exist in our physical devices and our
-software, especially websites.
-
-Photo by Jim Larrison: https://flic.kr/p/cXMK9o
-```
----
-
-<Image src="./images/rawpixel-750931-unsplash.jpg" />
-
-```notes
-Then this happened. These interface problems only got worse with phones.
-Our problem wasn't just clarity or precision, it was now also adaptability
-and responsiveness. We had to account for screen size, network conditions,
-device capability and more.
-
-Photo by rawpixel: https://unsplash.com/photos/rENRXgLsDEQ
-```
----
-
 <Image src="./images/facebook-notification.png" size="contain" />
 
 ```notes
@@ -88,33 +62,21 @@ Perhaps apocryphal, but the source of frustration that became React.
 <ul>
   <Appear>
     <li>"A JavaScript library for building user interfaces"</li>
-    <li>Created and open sourced by Facebook in 2013</li>
-    <li>112k+ Stars, 1.2k+ Contributors on <a href="https://github.com/facebook/react/">facebook/react</a></li>
+    <li>Declarative - simple views that react to changes in state</li>
+    <li>Component-based - encapsulate your UI in tight, composable chunks</li>
+    <li>Multiple render targets - render for browser, mobile native or VR</li>
+    <li>Popular - Facebook, Instagram, Twitter, Walmart and more</li>
+    <li>Huge ecosystem - easy to publish components to <kbd>npm</kbd></li>
   </Appear>
 </ul>
 
 ```notes
 "A JavaScript library for building user interfaces"
-Created and open sourced by Facebook in 2013
-112k+ Stars, 1.2k+ Contributors
-```
----
-
-## Why use React?
-
-<ul>
-  <Appear>
-    <li>Declarative - simple views that react to changes in state</li>
-    <li>Component-based - encapsulate your UI in tight, composable chunks</li>
-    <li>Multiple render targets - render for browser, mobile native or VR</li>
-    <li>Used by many companies, like: Facebook, Instagram, Twitter, Walmart and more</li>
-  </Appear>
-</ul>
-
-```notes
 Declarative
 Component-based
 Multiple render targets
+Popular
+Huge ecosystem
 ```
 ---
 
@@ -147,14 +109,14 @@ export default FullScreenCode
 
 ```jsx
 // JSX
-<Button text="Hello, World!">
+<Button text="Hello, World!" size={10 + 5} disabled>
   <p>How are you?</p>
 </Button>
 
 // JavaScript
 React.createElement(
   Button,
-  { text: 'Hello, World!' },
+  { text: 'Hello, World!', size: 10 + 5, disabled: true },
   React.createElement(
     'p',
     null,
