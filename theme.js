@@ -1,10 +1,14 @@
 import { hack as theme } from 'mdx-deck/themes'
-import prismStyle from "react-syntax-highlighter/styles/prism/atom-dark";
+import prismStyle from "react-syntax-highlighter/styles/prism/atom-dark"
+import prismBash from "react-syntax-highlighter/languages/prism/bash";
 
 const reactTheme = {
   ...theme,
   prism: {
-    style: prismStyle
+    style: prismStyle,
+    languages: {
+      bash: prismBash
+    }
   }
 };
 
