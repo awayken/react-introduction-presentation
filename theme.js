@@ -1,6 +1,12 @@
 import { hack as theme } from 'mdx-deck/themes'
+import prismStyle from "react-syntax-highlighter/styles/prism/atom-dark";
 
-const reactTheme = {...theme}
+const reactTheme = {
+  ...theme,
+  prism: {
+    style: prismStyle
+  }
+};
 
 reactTheme.colors.background = "#20232a"
 reactTheme.colors.codeBackground = "rgb(40, 44, 52)"
