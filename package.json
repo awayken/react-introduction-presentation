@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "mdx-deck": "^1.7.7"
+    "mdx-deck": "^1.10.2"
   },
   "scripts": {
     "start": "mdx-deck deck.mdx",
